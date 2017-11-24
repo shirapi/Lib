@@ -1,4 +1,5 @@
 #include"TextureManager.h"
+#include"DirectGraphics.h"
 
 TextureManager* TextureManager::pInstance = nullptr;
 

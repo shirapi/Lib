@@ -1,9 +1,9 @@
 #ifndef TEXTUREMANAGER_H
 #define TEXTUREMANAGER_H
 
-#include"DirectGraphics.h"
 #include"Utility.h"
 #include<map>
+#include<d3dx9.h>
 
 using std::string;
 using Utility::PICTURE_INFO;

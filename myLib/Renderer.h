@@ -1,7 +1,7 @@
 #ifndef RENDERER_H
 #define RENDERER_H
 
-#include"DirectGraphics.h"
+#include<d3dx9.h>
 #include"Utility.h"
 
 using Utility::CUSTOMVERTEX;

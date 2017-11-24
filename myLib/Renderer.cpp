@@ -1,4 +1,5 @@
 #include"Renderer.h"
+#include"DirectGraphics.h"
 #include"ModelManager.h"
 #include"TextureManager.h"
 

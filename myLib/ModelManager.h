@@ -1,8 +1,8 @@
 #ifndef MODELMANAGER_H
 #define MODELMANAGER_H
 
-#include"DirectGraphics.h"
 #include<map>
+#include<d3dx9.h>
 
 using std::string;
 

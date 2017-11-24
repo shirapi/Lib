@@ -1,4 +1,5 @@
 #include"ModelManager.h"
+#include"DirectGraphics.h"
 
 ModelManager* ModelManager::pInstance = nullptr;
 
