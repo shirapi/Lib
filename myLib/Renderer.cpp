@@ -86,7 +86,7 @@ void Renderer::TransformView(const D3DXVECTOR3& pCameraPos, const D3DXVECTOR3&  
 	(*m_pDXDevice)->SetTransform(D3DTS_VIEW, &matView);
 }
 
-inline D3DXVECTOR3* Renderer::GetLookatPos(D3DXVECTOR3* pos, float length, float degHeading, float degBank) {
+D3DXVECTOR3* Renderer::GetLookatPos(D3DXVECTOR3* pos, float length, float degHeading, float degBank) {
 
 	float radHeading, radBank;
 	radHeading = D3DXToRadian(degHeading);

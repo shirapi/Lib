@@ -25,7 +25,7 @@ public:
 	//第四引数 Z軸でのカメラの回転（度数）
 	void TransformView(const D3DXVECTOR3& pCameraPos, const D3DXVECTOR3&  LookatPos, const D3DXVECTOR3& UpVec);
 
-	inline D3DXVECTOR3* GetLookatPos(D3DXVECTOR3* pos, float length, float degHeading, float degBank);
+	D3DXVECTOR3* GetLookatPos(D3DXVECTOR3* pos, float length, float degHeading, float degBank);
 
 	//射影変換します
 	//第一引数 視野角（度数）（デフォルトは45度）

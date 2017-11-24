@@ -13,7 +13,6 @@ void Lib::CreateInstance(HWND hWnd, HINSTANCE hInstance){
 	if (pInstance == nullptr) {
 		pInstance = new Lib(hWnd, hInstance);
 	}
-
 }
 
 Lib& Lib::GetInstance() {
