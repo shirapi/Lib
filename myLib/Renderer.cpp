@@ -26,7 +26,7 @@ Renderer::~Renderer() {
 	delete pInstance;
 }
 
-void Renderer::TransformWorld(const D3DXVECTOR3& pPos, float degHeading, float degPitch, float degBank, float scale) {
+void Renderer::TransformWorld(const D3DXVECTOR3& pos, float degHeading, float degPitch, float degBank, float scale) {
 
 	//最終的なワールドトランスフォーム行列
 	D3DXMATRIXA16 matWorld;
@@ -61,23 +61,23 @@ void Renderer::TransformWorld(const D3DXVECTOR3& pPos, float degHeading, float d
 	D3DXMatrixMultiply(&matWorld, &matWorld, &matRotation);
 
 	//平行移動
-	D3DXMatrixTranslation(&matPosition, pPos.x, pPos.y, pPos.z);
+	D3DXMatrixTranslation(&matPosition, pos.x, pos.y, pos.z);
 	D3DXMatrixMultiply(&matWorld, &matWorld, &matPosition);
 
 	//レンダリング仕様の登録
 	(*m_pDXDevice)->SetTransform(D3DTS_WORLD, &matWorld);
 }
 
-void Renderer::TransformView(const D3DXVECTOR3& pCameraPos, const D3DXVECTOR3&  LookatPos, const D3DXVECTOR3& UpVec) {
+void Renderer::TransformView(const D3DXVECTOR3& cameraPos, const D3DXVECTOR3&  lookatPos, const D3DXVECTOR3& upVec) {
 
 	//最終的なビュートランスフォーム行列
 	D3DXMATRIXA16 matView;
 
 	// ビュートランスフォーム（視点座標変換）
 	D3DXMATRIXA16 matCameraPosition;
-	D3DXVECTOR3 vecEyePt = pCameraPos; //カメラ（視点）位置
-	D3DXVECTOR3 vecLookatPt = LookatPos;//注視位置
-	D3DXVECTOR3 vecUpVec = UpVec;//上方位置      
+	D3DXVECTOR3 vecEyePt = cameraPos; //カメラ（視点）位置
+	D3DXVECTOR3 vecLookatPt = lookatPos;//注視位置
+	D3DXVECTOR3 vecUpVec = upVec;//上方位置      
 	D3DXMatrixIdentity(&matView);
 	D3DXMatrixLookAtLH(&matCameraPosition, &vecEyePt, &vecLookatPt, &vecUpVec);
 	D3DXMatrixMultiply(&matView, &matView, &matCameraPosition);
@@ -86,17 +86,17 @@ void Renderer::TransformView(const D3DXVECTOR3& pCameraPos, const D3DXVECTOR3&  
 	(*m_pDXDevice)->SetTransform(D3DTS_VIEW, &matView);
 }
 
-D3DXVECTOR3* Renderer::GetLookatPos(D3DXVECTOR3* pos, float length, float degHeading, float degBank) {
+D3DXVECTOR3* Renderer::GetLookatPos(D3DXVECTOR3* pPos, float length, float degHeading, float degBank) {
 
 	float radHeading, radBank;
 	radHeading = D3DXToRadian(degHeading);
 	radBank = D3DXToRadian(degBank);
 
-	pos->x += length*(float)cos(radBank)*(float)cos(radHeading);
-	pos->y += length*(float)sin(radBank);
-	pos->z += length*(float)cos(radBank)*(float)sin(radHeading);
+	pPos->x += length*(float)cos(radBank)*(float)cos(radHeading);
+	pPos->y += length*(float)sin(radBank);
+	pPos->z += length*(float)cos(radBank)*(float)sin(radHeading);
 
-	return pos;
+	return pPos;
 }
 
 void Renderer::TransformProjection(float angle, float aspectRatio, float mimDistance, float maxDistance) {

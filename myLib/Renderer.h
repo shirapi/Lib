@@ -17,15 +17,15 @@ public:
 	//第三引数 X軸での回転（度数）（デフォルトは0）
 	//第四引数 Z軸での回転（度数）（デフォルトは0）
 	//第五引数 拡縮率（デフォルトは1.0）
-	void TransformWorld(const D3DXVECTOR3& pPos, float degHeading = 0.0f, float degPitch = 0.0f, float degBank = 0.0f, float scale = 1.0f);
+	void TransformWorld(const D3DXVECTOR3& pos, float degHeading = 0.0f, float degPitch = 0.0f, float degBank = 0.0f, float scale = 1.0f);
 
 	//視点座標変換します
 	//第一引数 カメラ座標
 	//第三引数 Y軸でのカメラの回転（度数）
 	//第四引数 Z軸でのカメラの回転（度数）
-	void TransformView(const D3DXVECTOR3& pCameraPos, const D3DXVECTOR3&  LookatPos, const D3DXVECTOR3& UpVec);
+	void TransformView(const D3DXVECTOR3& cameraPos, const D3DXVECTOR3& lookatPos, const D3DXVECTOR3& upVec);
 
-	D3DXVECTOR3* GetLookatPos(D3DXVECTOR3* pos, float length, float degHeading, float degBank);
+	D3DXVECTOR3* GetLookatPos(D3DXVECTOR3* pPos, float length, float degHeading, float degBank);
 
 	//射影変換します
 	//第一引数 視野角（度数）（デフォルトは45度）
