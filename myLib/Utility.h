@@ -82,9 +82,9 @@ namespace Utility {
 		int height;
 	};
 
-	bool JudgeCollisonCircle(const D3DXVECTOR2& pos1, float r1, const D3DXVECTOR2& pos2, float r2);
+	bool JudgeCollisionCircle(const D3DXVECTOR2& pos1, float r1, const D3DXVECTOR2& pos2, float r2);
 
-	bool JudgeCollisonSquare(const D3DXVECTOR2& pos1, float width1, float height1, const D3DXVECTOR2& pos2, float width2, float height2);
+	bool JudgeCollisionSquare(const D3DXVECTOR2& pos1, float width1, float height1, const D3DXVECTOR2& pos2, float width2, float height2);
 
 	float CalculateDistance(float x1, float y1, float x2, float y2);
 

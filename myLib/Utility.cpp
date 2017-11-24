@@ -4,7 +4,7 @@
 #include<stdio.h>
 #include<tchar.h>
 
-bool Utility::JudgeCollisonCircle(const D3DXVECTOR2& pos1, float r1, const D3DXVECTOR2& pos2, float r2) {
+bool Utility::JudgeCollisionCircle(const D3DXVECTOR2& pos1, float r1, const D3DXVECTOR2& pos2, float r2) {
 
 	float sumR = r1 + r2;//2つの円の半径の合計求める
 						 // 三平方の定理で中心点の長さを求めている
@@ -14,12 +14,10 @@ bool Utility::JudgeCollisonCircle(const D3DXVECTOR2& pos1, float r1, const D3DXV
 	if (sumR >= L) {//中心点の長さが半径の合計より短かったら真
 		return TRUE;
 	}
-	else if (sumR < L) {//中心点の長さが半径の合計より長かったら偽
-		return FALSE;
-	}
+	return FALSE;
 }
 
-bool Utility::JudgeCollisonSquare(const D3DXVECTOR2& pos1, float width1, float height1, const D3DXVECTOR2& pos2, float width2, float height2)
+bool Utility::JudgeCollisionSquare(const D3DXVECTOR2& pos1, float width1, float height1, const D3DXVECTOR2& pos2, float width2, float height2)
 {
 	D3DXVECTOR2 LeftTopA;
 	D3DXVECTOR2 RightTopA;
