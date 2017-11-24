@@ -30,6 +30,9 @@ private:
 	LPDIRECT3DDEVICE9 m_pDevice;
 
 	void SetRenderState();
+
+	DirectGraphics(const DirectGraphics&);
+	void operator =(const DirectGraphics&);
 };
 
 #endif

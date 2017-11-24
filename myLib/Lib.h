@@ -117,6 +117,9 @@ private:
 	Renderer* m_Renderer;
 	ModelManager* m_ModelManager;
 	TextureManager* m_TextureManager;
+
+	Lib(const Lib&);
+	void operator =(const Lib&);
 };
 
 #endif

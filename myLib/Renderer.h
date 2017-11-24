@@ -62,6 +62,9 @@ private:
 	~Renderer();
 
 	LPDIRECT3DDEVICE9* m_pDXDevice;
+
+	Renderer(const Renderer&);
+	void operator =(const Renderer&);
 };
 
 #endif

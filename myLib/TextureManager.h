@@ -28,6 +28,9 @@ private:
 
 	std::map<string, PICTURE_INFO> m_pTextures;
 
+	TextureManager(const TextureManager&);
+	void operator =(const TextureManager&);
+
 public:
 	const PICTURE_INFO& GetPictureInfo(const char* fileName) {
 		if (m_pTextures.find(fileName) != m_pTextures.end()) {

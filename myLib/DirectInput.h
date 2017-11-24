@@ -83,6 +83,9 @@ private:
 	int DikCheck(KEY_KIND keyKind);
 	void KeyCheck(KEY_KIND keyKind, BYTE* pDiks);
 	void MouseCheck(const DIMOUSESTATE& dims);
+
+	DirectInput(const DirectInput&);
+	void operator =(const DirectInput&);
 };
 
 #endif

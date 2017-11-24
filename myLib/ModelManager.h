@@ -33,6 +33,9 @@ private:
 
 	std::map<string, ModelData> m_MeshdData;
 
+	ModelManager(const ModelManager&);
+	void operator =(const ModelManager&);
+
 public:
 	const ModelData& GetModelData(const char* fileName) {
 		if (m_MeshdData.find(fileName) != m_MeshdData.end()) {
