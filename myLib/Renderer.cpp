@@ -161,6 +161,7 @@ bool Renderer::Draw(const D3DXVECTOR2& pos, const char* fileName, float width, f
 	ChangeScale(drawVertex, magnifying);
 
 	Rotation(drawVertex, deg);
+
 	if (flipHorizontal) {
 		TurnVertex_tu(drawVertex);
 	}
@@ -168,19 +169,7 @@ bool Renderer::Draw(const D3DXVECTOR2& pos, const char* fileName, float width, f
 		TurnVertex_tv(drawVertex);
 	}
 
-	// テクスチャをステージに割り当てる
-	if (FAILED((*m_pDXDevice)->SetTexture(0, pic.texture)))
-	{
-		return false;
-	}
-	// 描画
-
-	if (FAILED((*m_pDXDevice)->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2, drawVertex, sizeof(CUSTOMVERTEX))))
-	{
-		return false;
-	}
-
-	return true;
+	return Draw(drawVertex, fileName);
 }
 
 bool Renderer::Draw(const CUSTOMVERTEX vertex[], const char* fileName) {
