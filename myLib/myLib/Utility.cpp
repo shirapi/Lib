@@ -8,8 +8,8 @@ bool Utility::JudgeCollisonCircle(const D3DXVECTOR2& pos1, float r1, const D3DXV
 
 	float sumR = r1 + r2;//2つの円の半径の合計求める
 						 // 三平方の定理で中心点の長さを求めている
-	float L = pow(pos1.x - pos2.x, 2) + pow(pos1.y - pos2.y, 2);
-	L = sqrt(L);
+	float L = (float)pow(pos1.x - pos2.x, 2) + (float)pow(pos1.y - pos2.y, 2);
+	L = (float)sqrt(L);
 
 	if (sumR >= L) {//中心点の長さが半径の合計より短かったら真
 		return TRUE;

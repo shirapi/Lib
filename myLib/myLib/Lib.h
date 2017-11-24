@@ -1,6 +1,10 @@
 #ifndef LIB_H
 #define LIB_H
 
+#include<Windows.h>
+#include<d3dx9.h>
+#include"Utility.h"
+
 class DirectGraphics;
 class DirectInput;
 class Renderer;
@@ -21,13 +25,13 @@ public:
 	* @param keyKind キーボード識別ID
 	* @return キーボードのボタンの状態
 	*/
-	BUTTON_STATE GetKeyState(KEY_KIND keyKind);
+	Utility::BUTTON_STATE GetKeyState(Utility::KEY_KIND keyKind);
 
 	/*!
 	* マウスの状態を取得
 	* @return マウスの状態
 	*/
-	const MOUSE_DATA* GetMouseData();
+	const Utility::MOUSE_DATA* GetMouseData();
 
 	/*!
 	* 登録されているモデルデータの削除
@@ -79,7 +83,7 @@ public:
 	void StartDraw(int red = 0xff, int green = 0xff, int blue = 0xff);
 
 	bool Draw(const D3DXVECTOR2& pos, const char* fileName, float width, float height, float tu = 0.0f, float tv = 0.0f, float deg = 0.0f, float magnifying = 1.0f, DWORD color = 0xFFFFFFFF, bool flipHorizontal = false, bool flipVertical = false);
-	bool Draw(const CUSTOMVERTEX vertex[], const char* fileName);
+	bool Draw(const Utility::CUSTOMVERTEX vertex[], const char* fileName);
 
 	//描画関数
 	//第一引数 そのメッシュのID
@@ -89,11 +93,11 @@ public:
 	void EndRender();
 	void EndDraw();
 
-	void TurnVertex_tu(CUSTOMVERTEX vertex[]);
-	void TurnVertex_tv(CUSTOMVERTEX vertex[]);
-	void ChangeScale(CUSTOMVERTEX vertex[], float magnifying);
-	void TrimingVertex(CUSTOMVERTEX vertex[], float leftTopTu, float leftTopTv, float width, float height, float pngWidth, float pngHeight);
-	void Rotation(CUSTOMVERTEX vertex[], float deg);
+	void TurnVertex_tu(Utility::CUSTOMVERTEX vertex[]);
+	void TurnVertex_tv(Utility::CUSTOMVERTEX vertex[]);
+	void ChangeScale(Utility::CUSTOMVERTEX vertex[], float magnifying);
+	void TrimingVertex(Utility::CUSTOMVERTEX vertex[], float leftTopTu, float leftTopTv, float width, float height, float pngWidth, float pngHeight);
+	void Rotation(Utility::CUSTOMVERTEX vertex[], float deg);
 
 	//テキスチャを消します
 	void CancelTexture(const char* fileName);
@@ -105,14 +109,14 @@ public:
 
 private:
 	static Lib* pInstance;
-	Lib();
+	Lib(HWND hWnd, HINSTANCE hInstance);
 	~Lib();
 
-	DirectGraphics& m_DirectGraphics;
-	DirectInput& m_DirectInput;
-	Renderer& m_Renderer;
-	ModelManager& m_ModelManager;
-	TextureManager& m_TextureManager;
+	DirectGraphics* m_DirectGraphics;
+	DirectInput* m_DirectInput;
+	Renderer* m_Renderer;
+	ModelManager* m_ModelManager;
+	TextureManager* m_TextureManager;
 };
 
 #endif
