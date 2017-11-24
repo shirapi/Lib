@@ -156,7 +156,7 @@ bool Renderer::Draw(const D3DXVECTOR2& pos, const char* fileName, float width, f
 		drawVertex[i].y += pos.y;
 	}
 
-	TrimingVertex(drawVertex, tu, tv, width, height, pic.width, pic.height);
+	TrimingVertex(drawVertex, tu, tv, width, height, (float)pic.width, (float)pic.height);
 
 	ChangeScale(drawVertex, magnifying);
 
