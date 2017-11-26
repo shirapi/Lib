@@ -105,7 +105,7 @@ public:
 	//png,jpegファイルからデータを読み込みます
 	//第一引数 ファイルへのパス
 	//第二引数 そのテキスチャのID
-	HRESULT LoadPictureFile(const char* fileName);
+	HRESULT LoadPictureFile(const char* fileName, int width, int height);
 
 private:
 	static Lib* pInstance;
@@ -121,5 +121,4 @@ private:
 	Lib(const Lib&);
 	void operator =(const Lib&);
 };
-
 #endif

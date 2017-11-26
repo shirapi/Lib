@@ -130,6 +130,6 @@ void Lib::CancelTexture(const char* fileName) {
 	m_TextureManager->CancelTexture(fileName);
 }
 
-HRESULT Lib::LoadPictureFile(const char* fileName) {
-	return m_TextureManager->LoadPictureFile(fileName);
+HRESULT Lib::LoadPictureFile(const char* fileName, int width, int height) {
+	return m_TextureManager->LoadPictureFile(fileName, width, height);
 }

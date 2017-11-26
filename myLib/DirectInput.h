@@ -87,5 +87,4 @@ private:
 	DirectInput(const DirectInput&);
 	void operator =(const DirectInput&);
 };
-
 #endif

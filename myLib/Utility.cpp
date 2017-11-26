@@ -5,7 +5,6 @@
 #include<tchar.h>
 
 bool Utility::JudgeCollisionCircle(const D3DXVECTOR2& pos1, float r1, const D3DXVECTOR2& pos2, float r2) {
-
 	float sumR = r1 + r2;//2つの円の半径の合計求める
 						 // 三平方の定理で中心点の長さを求めている
 	float L = (float)pow(pos1.x - pos2.x, 2) + (float)pow(pos1.y - pos2.y, 2);
@@ -17,8 +16,7 @@ bool Utility::JudgeCollisionCircle(const D3DXVECTOR2& pos1, float r1, const D3DX
 	return FALSE;
 }
 
-bool Utility::JudgeCollisionSquare(const D3DXVECTOR2& pos1, float width1, float height1, const D3DXVECTOR2& pos2, float width2, float height2)
-{
+bool Utility::JudgeCollisionSquare(const D3DXVECTOR2& pos1, float width1, float height1, const D3DXVECTOR2& pos2, float width2, float height2){
 	D3DXVECTOR2 LeftTopA;
 	D3DXVECTOR2 RightTopA;
 	D3DXVECTOR2 RightBottomA;
@@ -50,7 +48,6 @@ bool Utility::JudgeCollisionSquare(const D3DXVECTOR2& pos1, float width1, float 
 }
 
 double Utility::CalculateRad(float x1, float y1, float x2, float y2) {
-
 	double rad;
 
 	double lengthX = x2 - x1;
@@ -92,7 +89,6 @@ double Utility::CalculateRad(float x1, float y1, float x2, float y2) {
 }
 
 float Utility::CalculateDeg(float x1, float y1, float x2, float y2) {
-
 	double rad;
 
 	double lengthX = x2 - x1;
@@ -134,7 +130,6 @@ float Utility::CalculateDeg(float x1, float y1, float x2, float y2) {
 }
 
 float Utility::CalculateDistance(float x1, float y1, float x2, float y2) {
-
 	return (float)sqrt(pow(x1 - x2, 2) + pow(y1 - y2, 2));
 }
 

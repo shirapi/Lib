@@ -21,6 +21,7 @@ public:
 	LPDIRECT3DDEVICE9* GetDevice() {
 		return &m_pDevice;
 	}
+
 private:
 	static DirectGraphics* pInstance;
 	DirectGraphics(HWND hWnd);
@@ -34,5 +35,4 @@ private:
 	DirectGraphics(const DirectGraphics&);
 	void operator =(const DirectGraphics&);
 };
-
 #endif

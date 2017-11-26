@@ -27,7 +27,6 @@ Renderer::~Renderer() {
 }
 
 void Renderer::TransformWorld(const D3DXVECTOR3& pos, float degHeading, float degPitch, float degBank, float scale) {
-
 	//最終的なワールドトランスフォーム行列
 	D3DXMATRIXA16 matWorld;
 	//平行移動用行列
@@ -69,7 +68,6 @@ void Renderer::TransformWorld(const D3DXVECTOR3& pos, float degHeading, float de
 }
 
 void Renderer::TransformView(const D3DXVECTOR3& cameraPos, const D3DXVECTOR3&  lookatPos, const D3DXVECTOR3& upVec) {
-
 	//最終的なビュートランスフォーム行列
 	D3DXMATRIXA16 matView;
 
@@ -87,7 +85,6 @@ void Renderer::TransformView(const D3DXVECTOR3& cameraPos, const D3DXVECTOR3&  l
 }
 
 D3DXVECTOR3* Renderer::GetLookatPos(D3DXVECTOR3* pPos, float length, float degHeading, float degBank) {
-
 	float radHeading, radBank;
 	radHeading = D3DXToRadian(degHeading);
 	radBank = D3DXToRadian(degBank);
@@ -100,7 +97,6 @@ D3DXVECTOR3* Renderer::GetLookatPos(D3DXVECTOR3* pPos, float length, float degHe
 }
 
 void Renderer::TransformProjection(float angle, float aspectRatio, float mimDistance, float maxDistance) {
-
 	// プロジェクショントランスフォーム（射影変換）
 	D3DXMATRIXA16 matProj;
 	D3DXMatrixPerspectiveFovLH(&matProj, angle, aspectRatio, mimDistance, maxDistance);
@@ -127,7 +123,6 @@ void Renderer::StartDraw(int red, int green, int blue) {
 }
 
 bool Renderer::Render(const char* fileName) {
-	
 	ModelManager::ModelData model = ModelManager::GetInstance().GetModelData(fileName);
 
 	for (DWORD i = 0; i < model.DwNumMaterials; i++)
@@ -140,7 +135,6 @@ bool Renderer::Render(const char* fileName) {
 }
 
 bool Renderer::Draw(const D3DXVECTOR2& pos, const char* fileName, float width, float height, float tu, float tv, float deg, float magnifying, DWORD color, bool flipHorizontal, bool flipVertical) {
-
 	Utility::PICTURE_INFO pic = TextureManager::GetInstance().GetPictureInfo(fileName);
 
 	CUSTOMVERTEX vertex[]{
@@ -174,7 +168,6 @@ bool Renderer::Draw(const D3DXVECTOR2& pos, const char* fileName, float width, f
 }
 
 bool Renderer::Draw(const CUSTOMVERTEX vertex[], const char* fileName) {
-	
 	Utility::PICTURE_INFO pic = TextureManager::GetInstance().GetPictureInfo(fileName);
 
 	// テクスチャをステージに割り当てる
@@ -202,7 +195,6 @@ void Renderer::EndDraw() {
 }
 
 inline void Renderer::TurnVertex_tu(CUSTOMVERTEX vertex[]) {
-
 	CUSTOMVERTEX tmpVertex;
 
 	tmpVertex.tu = vertex[0].tu;
@@ -216,7 +208,6 @@ inline void Renderer::TurnVertex_tu(CUSTOMVERTEX vertex[]) {
 }
 
 inline void Renderer::TurnVertex_tv(CUSTOMVERTEX vertex[]) {
-
 	CUSTOMVERTEX tmpVertex;
 
 	tmpVertex.tv = vertex[0].tv;
@@ -230,7 +221,6 @@ inline void Renderer::TurnVertex_tv(CUSTOMVERTEX vertex[]) {
 }
 
 void Renderer::ChangeScale(CUSTOMVERTEX vertex[], float magnifying) {
-
 	float halfWidth = (vertex[1].x - vertex[0].x) / 2;
 	float halfHeight = (vertex[0].y - vertex[3].y) / 2;
 
@@ -264,7 +254,6 @@ inline void Renderer::TrimingVertex(CUSTOMVERTEX vertex[], float leftTopTu, floa
 }
 
 void Renderer::Rotation(CUSTOMVERTEX vertex[], float deg) {
-
 	float cx, cy;
 	float rad;
 	CUSTOMVERTEX tmpVertex[4];

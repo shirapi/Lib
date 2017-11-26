@@ -11,7 +11,6 @@ void DirectGraphics::CreateInstance(HWND hWnd) {
 }
 
 DirectGraphics& DirectGraphics::GetInstance() {
-	
 	if (pInstance == nullptr) {
 		MessageBox(0, "DirectInputインスタンスが生成されていません", "", MB_OK);
 	}
@@ -57,15 +56,13 @@ DirectGraphics::DirectGraphics(HWND hWnd) {
 }
 
 DirectGraphics::~DirectGraphics() {
-
 	SAFE_RELEASE(m_pDevice);
 	SAFE_RELEASE(m_pDirect3D);
 
 	delete pInstance;
 }
 
-void DirectGraphics::SetRenderState()
-{
+void DirectGraphics::SetRenderState(){
 	m_pDevice->SetRenderState(D3DRS_ALPHABLENDENABLE, true);
 	m_pDevice->SetRenderState(D3DRS_SRCBLEND, D3DBLEND_SRCALPHA);  //SRCの設定
 	m_pDevice->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_INVSRCALPHA);
@@ -104,6 +101,5 @@ void DirectGraphics::SetRenderState()
 	d3dLight.Range = 200.0f;
 	m_pDevice->SetLight(0, &d3dLight);
 	m_pDevice->LightEnable(0, TRUE);
-
 }
 

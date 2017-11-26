@@ -10,7 +10,6 @@ void ModelManager::CreateInstance() {
 }
 
 ModelManager& ModelManager::GetInstance() {
-
 	if (pInstance == nullptr) {
 		MessageBox(0, "ModelManagerインスタンスが生成されていません", "", MB_OK);
 	}
@@ -18,7 +17,6 @@ ModelManager& ModelManager::GetInstance() {
 }
 
 ModelManager::ModelManager() {
-	
 }
 
 ModelManager::~ModelManager() {
@@ -33,7 +31,6 @@ ModelManager::~ModelManager() {
 }
 
 HRESULT ModelManager::LoadXFile(const char* fileName) {
-
 	LPDIRECT3DDEVICE9* pDXDevice = DirectGraphics::GetInstance().GetDevice();
 
 	// Xファイルからメッシュをロードする	

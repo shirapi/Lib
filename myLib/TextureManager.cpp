@@ -18,7 +18,6 @@ TextureManager& TextureManager::GetInstance() {
 }
 
 TextureManager::TextureManager() {
-
 }
 
 TextureManager::~TextureManager() {
@@ -29,9 +28,11 @@ void TextureManager::CancelTexture(const char* fileName) {
 	m_pTextures.erase(fileName);
 }
 
-HRESULT TextureManager::LoadPictureFile(const char* fileName) {
-	
+HRESULT TextureManager::LoadPictureFile(const char* fileName, int width, int height) {
 	LPDIRECT3DDEVICE9* pDXDevice = DirectGraphics::GetInstance().GetDevice();
+
+	m_pTextures[fileName].width = width;
+	m_pTextures[fileName].height = height;
 
 	if (FAILED(D3DXCreateTextureFromFileEx(
 		*pDXDevice,
@@ -47,7 +48,7 @@ HRESULT TextureManager::LoadPictureFile(const char* fileName) {
 		D3DCOLOR_ARGB(255, 0, 255, 0),  //緑を透過
 		NULL,
 		NULL,
-		&m_pTextures[fileName] .texture         // テクスチャ名
+		&m_pTextures[fileName].texture         // テクスチャ名
 	)))
 	{
 		MessageBox(NULL, "ファイルの読み込みに失敗しました", NULL, MB_OK);

@@ -4,8 +4,7 @@
 
 DirectInput* DirectInput::pInstance = nullptr;
 
-void DirectInput::CrateInstance(HWND hWnd, HINSTANCE hInstance)
-{
+void DirectInput::CrateInstance(HWND hWnd, HINSTANCE hInstance){
 	if (pInstance == nullptr) {
 		pInstance = new DirectInput(hWnd, hInstance);
 	}
@@ -18,8 +17,7 @@ DirectInput& DirectInput::GetInstance() {
 	return *pInstance;
 }
 
-DirectInput::DirectInput(HWND hWnd, HINSTANCE hInstance)
-{
+DirectInput::DirectInput(HWND hWnd, HINSTANCE hInstance){
 	//DirectInput‚Ì¶¬
 	if (FAILED(DirectInput8Create(hInstance, DIRECTINPUT_VERSION, IID_IDirectInput8, (VOID**)&m_pDInput, NULL)))
 	{
@@ -86,8 +84,7 @@ DirectInput::DirectInput(HWND hWnd, HINSTANCE hInstance)
 	m_pMouseDevise->Acquire();
 }
 
-DirectInput::~DirectInput()
-{
+DirectInput::~DirectInput(){
 	m_pKeyDevice->Unacquire();
 	
 	m_pKeyDevice->Release();

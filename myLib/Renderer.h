@@ -56,6 +56,7 @@ public:
 	void ChangeScale(CUSTOMVERTEX vertex[], float magnifying);
 	inline void TrimingVertex(CUSTOMVERTEX vertex[], float leftTopTu, float leftTopTv, float width, float height, float pngWidth, float pngHeight);
 	void Rotation(CUSTOMVERTEX vertex[], float deg);
+
 private:
 	static Renderer* pInstance;
 	Renderer();
@@ -66,5 +67,4 @@ private:
 	Renderer(const Renderer&);
 	void operator =(const Renderer&);
 };
-
 #endif
