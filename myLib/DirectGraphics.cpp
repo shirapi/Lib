@@ -23,15 +23,22 @@ DirectGraphics::DirectGraphics(HWND hWnd) {
 	{
 		MessageBox(0, "Direct3Dの作成に失敗しました", "", MB_OK);
 	}
+
+	//Display Mode の設定
+	D3DDISPLAYMODE D3DdisplayMode;
+	m_pDirect3D->GetAdapterDisplayMode(
+		D3DADAPTER_DEFAULT,
+		&D3DdisplayMode);
+
 	// 「DIRECT3Dデバイス」オブジェクトの作成
 	D3DPRESENT_PARAMETERS d3dpp;
-	ZeroMemory(&d3dpp, sizeof(d3dpp));
-	d3dpp.BackBufferFormat = D3DFMT_UNKNOWN;
+	ZeroMemory(&d3dpp, sizeof(D3DPRESENT_PARAMETERS));
+	d3dpp.BackBufferFormat = D3DdisplayMode.Format;
 	d3dpp.BackBufferCount = 1;
 	d3dpp.SwapEffect = D3DSWAPEFFECT_DISCARD;
 	d3dpp.Windowed = TRUE;
 	d3dpp.EnableAutoDepthStencil = TRUE;
-	d3dpp.AutoDepthStencilFormat = D3DFMT_D16;
+	d3dpp.AutoDepthStencilFormat = D3DFMT_D24S8;
 
 	if (FAILED(m_pDirect3D->CreateDevice(D3DADAPTER_DEFAULT, D3DDEVTYPE_HAL, hWnd,
 		D3DCREATE_MIXED_VERTEXPROCESSING,
@@ -51,8 +58,6 @@ DirectGraphics::DirectGraphics(HWND hWnd) {
 	//viewport設定
 	D3DVIEWPORT9 Viewport{ 0,0,d3dpp.BackBufferWidth,d3dpp.BackBufferHeight,0.0f,1.0f };
 	m_pDevice->SetViewport(&Viewport);
-
-	SetRenderState();
 }
 
 DirectGraphics::~DirectGraphics() {
@@ -62,7 +67,7 @@ DirectGraphics::~DirectGraphics() {
 	delete pInstance;
 }
 
-void DirectGraphics::SetRenderState(){
+void DirectGraphics::SetRenderState3D(){
 	m_pDevice->SetRenderState(D3DRS_ALPHABLENDENABLE, true);
 	m_pDevice->SetRenderState(D3DRS_SRCBLEND, D3DBLEND_SRCALPHA);  //SRCの設定
 	m_pDevice->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_INVSRCALPHA);
@@ -78,12 +83,9 @@ void DirectGraphics::SetRenderState(){
 
 	m_pDevice->SetTextureStageState(0, D3DTSS_COLORARG1, D3DTA_TEXTURE);
 	m_pDevice->SetTextureStageState(0, D3DTSS_COLORARG2, D3DTA_DIFFUSE);
-
 	m_pDevice->SetTextureStageState(0, D3DTSS_COLOROP, D3DTOP_MODULATE);
-
 	m_pDevice->SetTextureStageState(0, D3DTSS_ALPHAARG1, D3DTA_TEXTURE);
 	m_pDevice->SetTextureStageState(0, D3DTSS_ALPHAARG2, D3DTA_DIFFUSE);
-
 	m_pDevice->SetTextureStageState(0, D3DTSS_ALPHAOP, D3DTOP_MODULATE);
 
 	// ライトをあてる 白色ライト、鏡面反射有りに設定
@@ -103,3 +105,17 @@ void DirectGraphics::SetRenderState(){
 	m_pDevice->LightEnable(0, TRUE);
 }
 
+void DirectGraphics::SetRenderState2D() {
+	m_pDevice->SetRenderState(D3DRS_ALPHABLENDENABLE, true);
+	m_pDevice->SetRenderState(D3DRS_SRCBLEND, D3DBLEND_SRCALPHA);  //SRCの設定
+	m_pDevice->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_INVSRCALPHA);
+	m_pDevice->SetRenderState(D3DRS_DIFFUSEMATERIALSOURCE, D3DMCS_COLOR1);
+	m_pDevice->SetRenderState(D3DRS_ZENABLE, false);
+
+	m_pDevice->SetTextureStageState(0, D3DTSS_COLORARG1, D3DTA_TEXTURE);
+	m_pDevice->SetTextureStageState(0, D3DTSS_COLORARG2, D3DTA_DIFFUSE);
+	m_pDevice->SetTextureStageState(0, D3DTSS_COLOROP, D3DTOP_MODULATE);
+	m_pDevice->SetTextureStageState(0, D3DTSS_ALPHAARG1, D3DTA_TEXTURE);
+	m_pDevice->SetTextureStageState(0, D3DTSS_ALPHAARG2, D3DTA_DIFFUSE);
+	m_pDevice->SetTextureStageState(0, D3DTSS_ALPHAOP, D3DTOP_MODULATE);
+}

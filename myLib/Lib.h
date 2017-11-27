@@ -72,6 +72,10 @@ public:
 	//第四引数 可視できる最大距離（デフォルトは100.0）
 	void TransformProjection(float angle = 45.0f, float aspectRatio = 1.0f, float mimDistance = 1.0f, float maxDistance = 100.0f);
 
+	void SetRenderState2D();
+
+	void SetRenderState3D();
+
 	/*!
 	* 3Dを描画する前に必ず呼ぶこと
 	*/

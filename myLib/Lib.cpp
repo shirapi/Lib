@@ -80,6 +80,14 @@ void Lib::TransformProjection(float angle, float aspectRatio, float mimDistance,
 	m_Renderer->TransformProjection(angle, aspectRatio, mimDistance, maxDistance);
 }
 
+void Lib::SetRenderState2D() {
+	m_DirectGraphics->SetRenderState2D();
+}
+
+void Lib::SetRenderState3D() {
+	m_DirectGraphics->SetRenderState3D();
+}
+
 void Lib::StartRender() {
 	m_Renderer->StartRender();
 }

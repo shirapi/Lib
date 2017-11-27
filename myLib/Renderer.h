@@ -38,7 +38,7 @@ public:
 	void StartRender();
 
 	//2Dï`âÊÇénÇﬂÇÈèÄîı
-	void StartDraw(int red = 0xff, int green = 0xff, int blue = 0xff);
+	void StartDraw(int red, int green, int blue);
 
 	bool Draw(const D3DXVECTOR2& pos, const char* fileName, float width, float height, float tu = 0.0f, float tv = 0.0f, float deg = 0.0f, float magnifying = 1.0f, DWORD color = 0xFFFFFFFF, bool flipHorizontal = false, bool flipVertical = false);
 	bool Draw(const CUSTOMVERTEX vertex[], const char* fileName);
@@ -51,10 +51,10 @@ public:
 	void EndRender();
 	void EndDraw();
 
-	inline void TurnVertex_tu(CUSTOMVERTEX vertex[]);
-	inline void TurnVertex_tv(CUSTOMVERTEX vertex[]);
+	void TurnVertex_tu(CUSTOMVERTEX vertex[]);
+	void TurnVertex_tv(CUSTOMVERTEX vertex[]);
 	void ChangeScale(CUSTOMVERTEX vertex[], float magnifying);
-	inline void TrimingVertex(CUSTOMVERTEX vertex[], float leftTopTu, float leftTopTv, float width, float height, float pngWidth, float pngHeight);
+	void TrimingVertex(CUSTOMVERTEX vertex[], float leftTopTu, float leftTopTv, float width, float height, float pngWidth, float pngHeight);
 	void Rotation(CUSTOMVERTEX vertex[], float deg);
 
 private:

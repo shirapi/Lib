@@ -18,6 +18,9 @@ public:
 	static void CreateInstance(HWND hWnd);
 	static DirectGraphics& GetInstance();
 
+	void SetRenderState2D();
+	void SetRenderState3D();
+
 	LPDIRECT3DDEVICE9* GetDevice() {
 		return &m_pDevice;
 	}
@@ -29,8 +32,6 @@ private:
 
 	LPDIRECT3D9 m_pDirect3D;
 	LPDIRECT3DDEVICE9 m_pDevice;
-
-	void SetRenderState();
 
 	DirectGraphics(const DirectGraphics&);
 	void operator =(const DirectGraphics&);

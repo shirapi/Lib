@@ -194,7 +194,7 @@ void Renderer::EndDraw() {
 	(*m_pDXDevice)->Present(NULL, NULL, NULL, NULL);
 }
 
-inline void Renderer::TurnVertex_tu(CUSTOMVERTEX vertex[]) {
+void Renderer::TurnVertex_tu(CUSTOMVERTEX vertex[]) {
 	CUSTOMVERTEX tmpVertex;
 
 	tmpVertex.tu = vertex[0].tu;
@@ -207,7 +207,7 @@ inline void Renderer::TurnVertex_tu(CUSTOMVERTEX vertex[]) {
 
 }
 
-inline void Renderer::TurnVertex_tv(CUSTOMVERTEX vertex[]) {
+void Renderer::TurnVertex_tv(CUSTOMVERTEX vertex[]) {
 	CUSTOMVERTEX tmpVertex;
 
 	tmpVertex.tv = vertex[0].tv;
@@ -238,7 +238,7 @@ void Renderer::ChangeScale(CUSTOMVERTEX vertex[], float magnifying) {
 	vertex[3].y = centerY + -halfHeight*magnifying;
 }
 
-inline void Renderer::TrimingVertex(CUSTOMVERTEX vertex[], float leftTopTu, float leftTopTv, float width, float height, float pngWidth, float pngHeight) {
+void Renderer::TrimingVertex(CUSTOMVERTEX vertex[], float leftTopTu, float leftTopTv, float width, float height, float pngWidth, float pngHeight) {
 	vertex[0].tu = leftTopTu / pngWidth;
 	vertex[0].tv = leftTopTv / pngHeight;
 
