@@ -3,6 +3,20 @@
 #include<d3dx9.h>
 #include<stdio.h>
 #include<tchar.h>
+#include<time.h>
+
+//min<= random <= max
+int Utility::Random(int min, int max)
+{
+	static bool seedrandom = false;
+
+	if (seedrandom == false) {
+		srand((unsigned int)time(NULL));
+		seedrandom = true;
+	}
+
+	return min + rand() % (max + 1);
+}
 
 bool Utility::JudgeCollisionCircle(const D3DXVECTOR2& pos1, float r1, const D3DXVECTOR2& pos2, float r2) {
 	float sumR = r1 + r2;//2‚Â‚Ì‰~‚Ì”¼Œa‚Ì‡Œv‹‚ß‚é
