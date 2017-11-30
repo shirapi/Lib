@@ -134,6 +134,16 @@ bool Renderer::Render(const char* fileName) {
 	return true;
 }
 
+bool Renderer::Draw(const D3DXVECTOR3& pos, const char* fileName, float width, float height, float tu, float tv, float deg, float magnifying, DWORD color, bool flipHorizontal, bool flipVertical) {
+	D3DXVECTOR2 pos2;
+	pos2.x = pos.x;
+	pos2.y = pos.y;
+	if (Draw(pos2, fileName, width, height, tu, tv, deg, magnifying, color, flipHorizontal, flipVertical)) {
+		return true;
+	}
+	return false;
+}
+
 bool Renderer::Draw(const D3DXVECTOR2& pos, const char* fileName, float width, float height, float tu, float tv, float deg, float magnifying, DWORD color, bool flipHorizontal, bool flipVertical) {
 	Utility::PICTURE_INFO pic = TextureManager::GetInstance().GetPictureInfo(fileName);
 

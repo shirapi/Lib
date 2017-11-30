@@ -1,7 +1,6 @@
 #ifndef RENDERER_H
 #define RENDERER_H
 
-#include<d3dx9.h>
 #include"Utility.h"
 
 using Utility::CUSTOMVERTEX;
@@ -41,6 +40,7 @@ public:
 	void StartDraw(int red, int green, int blue);
 
 	bool Draw(const D3DXVECTOR2& pos, const char* fileName, float width, float height, float tu = 0.0f, float tv = 0.0f, float deg = 0.0f, float magnifying = 1.0f, DWORD color = 0xFFFFFFFF, bool flipHorizontal = false, bool flipVertical = false);
+	bool Draw(const D3DXVECTOR3& pos, const char* fileName, float width, float height, float tu = 0.0f, float tv = 0.0f, float deg = 0.0f, float magnifying = 1.0f, DWORD color = 0xFFFFFFFF, bool flipHorizontal = false, bool flipVertical = false);
 	bool Draw(const CUSTOMVERTEX vertex[], const char* fileName);
 
 	//ï`âÊä÷êî

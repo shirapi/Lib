@@ -2,7 +2,6 @@
 #define LIB_H
 
 #include<Windows.h>
-#include<d3dx9.h>
 #include"Utility.h"
 
 class DirectGraphics;
@@ -86,6 +85,7 @@ public:
 	*/
 	void StartDraw(int red = 0xff, int green = 0xff, int blue = 0xff);
 
+	bool Draw(const D3DXVECTOR3& pos, const char* fileName, float width, float height, float tu = 0.0f, float tv = 0.0f, float deg = 0.0f, float magnifying = 1.0f, DWORD color = 0xFFFFFFFF, bool flipHorizontal = false, bool flipVertical = false);
 	bool Draw(const D3DXVECTOR2& pos, const char* fileName, float width, float height, float tu = 0.0f, float tv = 0.0f, float deg = 0.0f, float magnifying = 1.0f, DWORD color = 0xFFFFFFFF, bool flipHorizontal = false, bool flipVertical = false);
 	bool Draw(const Utility::CUSTOMVERTEX vertex[], const char* fileName);
 

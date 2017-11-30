@@ -82,6 +82,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
+      <ShowIncludes>false</ShowIncludes>
     </ClCompile>
     <Link>
       <AdditionalDependencies>d3dx9.lib;d3d9.lib;dxguid.lib;dinput8.lib;dsound.lib;winmm.lib;Xinput.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -101,6 +102,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
+      <ShowIncludes>false</ShowIncludes>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -122,6 +124,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Collider.cpp" />
+    <ClCompile Include="ColliderManager.cpp" />
     <ClCompile Include="DirectGraphics.cpp" />
     <ClCompile Include="DirectInput.cpp" />
     <ClCompile Include="Lib.cpp" />
@@ -131,10 +135,13 @@
     <ClCompile Include="Utility.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Collider.h" />
+    <ClInclude Include="ColliderManager.h" />
     <ClInclude Include="DirectGraphics.h" />
     <ClInclude Include="DirectInput.h" />
     <ClInclude Include="Lib.h" />
     <ClInclude Include="ModelManager.h" />
+    <ClInclude Include="ObjectBase.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="TextureManager.h" />
     <ClInclude Include="Utility.h" />

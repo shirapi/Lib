@@ -99,6 +99,9 @@ void Lib::StartDraw(int red, int green, int blue) {
 bool Lib::Draw(const D3DXVECTOR2& pos, const char* fileName, float width, float height, float tu, float tv, float deg, float magnifying, DWORD color, bool flipHorizontal, bool flipVertical) {
 	return m_Renderer->Draw(pos, fileName, width, height, tu, tv, deg, magnifying, color, flipHorizontal, flipVertical);
 }
+bool Lib::Draw(const D3DXVECTOR3& pos, const char* fileName, float width, float height, float tu, float tv, float deg, float magnifying, DWORD color, bool flipHorizontal, bool flipVertical) {
+	return m_Renderer->Draw(pos, fileName, width, height, tu, tv, deg, magnifying, color, flipHorizontal, flipVertical);
+}
 bool Lib::Draw(const CUSTOMVERTEX vertex[], const char* fileName) {
 	return m_Renderer->Draw(vertex, fileName);
 }

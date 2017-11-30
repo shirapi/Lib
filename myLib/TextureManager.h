@@ -3,13 +3,12 @@
 
 #include"Utility.h"
 #include<map>
-#include<d3dx9.h>
 
 using std::string;
 using Utility::PICTURE_INFO;
 
 class TextureManager {
-public:
+public:	
 	static void CreateInstance();
 	static TextureManager& GetInstance();
 
