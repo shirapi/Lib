@@ -6,8 +6,11 @@
 
 class ColliderBase {
 public:
-	//ColliderBase(const std::string className);
-	//~ColliderBase();
+	ColliderBase(const std::string className,);
+	~ColliderBase();
+
+	void SetPos(const D3DXVECTOR3& pos);
+	void Execute();
 
 	const std::string& GetAffiliatedClassName();
 

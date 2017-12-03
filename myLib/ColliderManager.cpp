@@ -1,4 +1,6 @@
 #include"ColliderManager.h"
+#include"SquareCollider.h"
+#include"CircleCollider.h"
 
 ColliderManager* ColliderManager::m_pInstance = nullptr;
 
@@ -32,10 +34,32 @@ ColliderManager::~ColliderManager() {
 //	return m_Colliders[className].size();
 //}
 
-//void ColliderManager::Register(ColliderBase* pCollider) {
-//	m_Colliders.push_back(pCollider);
-//}
+void ColliderManager::Update() {
 
-void ColliderManager::Cancel(ColliderBase* pCollider) {
+}
 
+void ColliderManager::Register(SquareCollider* pCollider) {
+	m_PtrSquareColliders.push_back(pCollider);
+}
+
+void ColliderManager::Cancel(SquareCollider* pCollider) {
+	for (auto itr = m_PtrSquareColliders.begin(); itr != m_PtrSquareColliders.end(); itr++)
+	{
+		if (pCollider == *itr) {
+			m_PtrSquareColliders.erase(itr);
+		}
+	}
+}
+
+void ColliderManager::Register(CircleCollider* pCollider) {
+	m_PtrCircleColliders.push_back(pCollider);
+}
+
+void ColliderManager::Cancel(CircleCollider* pCollider) {
+	for (auto itr = m_PtrCircleColliders.begin(); itr != m_PtrCircleColliders.end(); itr++)
+	{
+		if (pCollider == *itr) {
+			m_PtrCircleColliders.erase(itr);
+		}
+	}
 }
