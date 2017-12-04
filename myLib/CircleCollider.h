@@ -5,9 +5,10 @@
 
 class CircleCollider :public ColliderBase {
 public:
-	CircleCollider();
-	~CircleCollider();
+	CircleCollider(const std::string className, const D3DXVECTOR3& pos, std::function<void()> function, float radius);
+	virtual ~CircleCollider();
 
+	float GetRadius();
 private:
 	float m_Radius;
 };

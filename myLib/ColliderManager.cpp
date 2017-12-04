@@ -1,6 +1,7 @@
 #include"ColliderManager.h"
 #include"SquareCollider.h"
 #include"CircleCollider.h"
+#include"Utility.h"
 
 ColliderManager* ColliderManager::m_pInstance = nullptr;
 
@@ -19,23 +20,9 @@ ColliderManager::~ColliderManager() {
 
 }
 
-//const ColliderBase& ColliderManager::GetCollider(std::string className, int no) {
-//	//if (m_Colliders.find(className) == m_Colliders.end()) {
-//	//	std::vector< ColliderBase* >::iterator iter = std::find(m_Colliders[className].begin(), m_Colliders[className].end(), no);
-//	//	if (iter == m_Colliders[className].end()) {
-//	//		exit(1);
-//	//	}
-//	//}
-//
-//	return *m_Colliders[className][no];
-//}
-//
-//unsigned int ColliderManager::GetSize(std::string className) {
-//	return m_Colliders[className].size();
-//}
-
 void ColliderManager::Update() {
-
+	JudgeAllSquare();
+	JudgeAllCircle();
 }
 
 void ColliderManager::Register(SquareCollider* pCollider) {
@@ -56,10 +43,72 @@ void ColliderManager::Register(CircleCollider* pCollider) {
 }
 
 void ColliderManager::Cancel(CircleCollider* pCollider) {
-	for (auto itr = m_PtrCircleColliders.begin(); itr != m_PtrCircleColliders.end(); itr++)
+	for (auto itr = m_PtrCircleColliders.begin(); itr != m_PtrCircleColliders.end(); ++itr)
 	{
 		if (pCollider == *itr) {
 			m_PtrCircleColliders.erase(itr);
+		}
+	}
+}
+
+void ColliderManager::JudgeAllCircle() {
+	for (auto itrPoint = m_PtrCircleColliders.begin(); itrPoint != m_PtrCircleColliders.end(); ++itrPoint) {
+		std::vector<std::string> collidedClassNames;
+		bool isCollided = false;
+		D3DXVECTOR2 pos1;
+		D3DXVECTOR3 tmpPos = (*itrPoint)->GetPos();
+		pos1.x = tmpPos.x;
+		pos1.y = tmpPos.y;
+
+		for (auto itr = m_PtrCircleColliders.begin(); itr != m_PtrCircleColliders.end(); ++itr) {
+			if (itrPoint != itr) {
+				D3DXVECTOR2 pos2;
+				tmpPos = (*itr)->GetPos();
+				pos2.x = tmpPos.x;
+				pos2.y = tmpPos.y;
+
+				if (Utility::JudgeCollisionCircle(pos1, (*itrPoint)->GetRadius(), pos2, (*itr)->GetRadius())) {
+					isCollided = true;
+					collidedClassNames.push_back((*itr)->GetAffiliatedClassName());
+				}
+			}
+		}
+
+		(*itrPoint)->SetCollidedClassName(collidedClassNames);
+
+		if (isCollided) {
+			(*itrPoint)->Execute();
+		}
+	}
+}
+
+void ColliderManager::JudgeAllSquare() {
+	for (auto itrPoint = m_PtrSquareColliders.begin(); itrPoint != m_PtrSquareColliders.end(); ++itrPoint) {
+		std::vector<std::string> collidedClassNames;
+		bool isCollided = false;
+		D3DXVECTOR2 pos1;
+		D3DXVECTOR3 tmpPos = (*itrPoint)->GetPos();
+		pos1.x = tmpPos.x;
+		pos1.y = tmpPos.y;
+
+		for (auto itr = m_PtrSquareColliders.begin(); itr != m_PtrSquareColliders.end(); ++itr) {
+			if (itrPoint != itr) {
+				D3DXVECTOR2 pos2;
+				tmpPos = (*itr)->GetPos();
+				pos2.x = tmpPos.x;
+				pos2.y = tmpPos.y;
+
+				if (Utility::JudgeCollisionSquare(pos1, (*itrPoint)->GetSize().width, (*itrPoint)->GetSize().height, pos2, (*itr)->GetSize().width, (*itr)->GetSize().height)) {
+					isCollided = true;
+					collidedClassNames.push_back((*itr)->GetAffiliatedClassName());
+				}
+			}
+		}
+
+		(*itrPoint)->SetCollidedClassName(collidedClassNames);
+
+		if (isCollided) {
+			(*itrPoint)->Execute();
 		}
 	}
 }

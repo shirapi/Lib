@@ -16,7 +16,7 @@ public:
 	void Cancel(SquareCollider* pCollider);
 	void Register(CircleCollider* pCollider);
 	void Cancel(CircleCollider* pCollider);
-
+	
 private:
 	ColliderManager();
 	~ColliderManager();
@@ -24,5 +24,8 @@ private:
 
 	std::vector<SquareCollider*> m_PtrSquareColliders;
 	std::vector<CircleCollider*> m_PtrCircleColliders;
+
+	void JudgeAllSquare();
+	void JudgeAllCircle();
 };
 #endif

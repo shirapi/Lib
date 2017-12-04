@@ -5,7 +5,16 @@
 
 class SquareCollider :public ColliderBase {
 public:
-	SquareCollider();
-	~SquareCollider();
+	struct Size {
+		float width;
+		float height;
+	};
+
+	SquareCollider(const std::string className, const D3DXVECTOR3& pos, std::function<void()> function, Size size);
+	virtual ~SquareCollider();
+
+	const Size& GetSize();
+private:
+	Size m_Size;
 };
 #endif
