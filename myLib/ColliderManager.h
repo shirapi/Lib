@@ -8,7 +8,7 @@ class CircleCollider;
 
 class ColliderManager {
 public:
-	static const ColliderManager& GetInstance();
+	static ColliderManager& GetInstance();
 
 	void Update();
 

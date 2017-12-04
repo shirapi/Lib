@@ -10,7 +10,7 @@ public:
 		float height;
 	};
 
-	SquareCollider(const std::string className, const D3DXVECTOR3& pos, std::function<void()> function, Size size);
+	SquareCollider(const std::string className, const D3DXVECTOR3& pos, std::function<void()> function, const Size& size);
 	virtual ~SquareCollider();
 
 	const Size& GetSize();

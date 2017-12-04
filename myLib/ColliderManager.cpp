@@ -5,7 +5,7 @@
 
 ColliderManager* ColliderManager::m_pInstance = nullptr;
 
-const ColliderManager& ColliderManager::GetInstance() {
+ColliderManager& ColliderManager::GetInstance() {
 	if (m_pInstance == nullptr) {
 		m_pInstance = new ColliderManager;
 	}
@@ -30,10 +30,12 @@ void ColliderManager::Register(SquareCollider* pCollider) {
 }
 
 void ColliderManager::Cancel(SquareCollider* pCollider) {
-	for (auto itr = m_PtrSquareColliders.begin(); itr != m_PtrSquareColliders.end(); itr++)
-	{
+	for (auto itr = m_PtrSquareColliders.begin(); itr != m_PtrSquareColliders.end();) {
 		if (pCollider == *itr) {
-			m_PtrSquareColliders.erase(itr);
+			itr = m_PtrSquareColliders.erase(itr);
+		}
+		else {
+			itr++;
 		}
 	}
 }
@@ -43,10 +45,12 @@ void ColliderManager::Register(CircleCollider* pCollider) {
 }
 
 void ColliderManager::Cancel(CircleCollider* pCollider) {
-	for (auto itr = m_PtrCircleColliders.begin(); itr != m_PtrCircleColliders.end(); ++itr)
-	{
+	for (auto itr = m_PtrCircleColliders.begin(); itr != m_PtrCircleColliders.end(); ++itr){
 		if (pCollider == *itr) {
-			m_PtrCircleColliders.erase(itr);
+			itr = m_PtrCircleColliders.erase(itr);
+		}
+		else {
+			itr++;
 		}
 	}
 }

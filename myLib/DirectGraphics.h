@@ -30,8 +30,8 @@ private:
 	DirectGraphics(HWND hWnd);
 	~DirectGraphics();
 
-	LPDIRECT3D9 m_pDirect3D;
-	LPDIRECT3DDEVICE9 m_pDevice;
+	LPDIRECT3D9 m_pDirect3D = NULL;
+	LPDIRECT3DDEVICE9 m_pDevice = NULL;
 
 	DirectGraphics(const DirectGraphics&);
 	void operator =(const DirectGraphics&);
