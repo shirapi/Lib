@@ -130,6 +130,7 @@
     <ClCompile Include="DirectGraphics.cpp" />
     <ClCompile Include="DirectInput.cpp" />
     <ClCompile Include="Font.cpp" />
+    <ClCompile Include="FontManager.cpp" />
     <ClCompile Include="Lib.cpp" />
     <ClCompile Include="ModelManager.cpp" />
     <ClCompile Include="Renderer.cpp" />
@@ -144,6 +145,7 @@
     <ClInclude Include="DirectGraphics.h" />
     <ClInclude Include="DirectInput.h" />
     <ClInclude Include="Font.h" />
+    <ClInclude Include="FontManager.h" />
     <ClInclude Include="Lib.h" />
     <ClInclude Include="ModelManager.h" />
     <ClInclude Include="ObjectBase.h" />

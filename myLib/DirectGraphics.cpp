@@ -18,6 +18,9 @@ DirectGraphics& DirectGraphics::GetInstance() {
 }
 
 DirectGraphics::DirectGraphics(HWND hWnd) {
+
+	m_HWnd = hWnd;
+
 	// 「Direct3D」オブジェクトの作成
 	if (NULL == (m_pDirect3D = Direct3DCreate9(D3D_SDK_VERSION)))
 	{
@@ -65,6 +68,10 @@ DirectGraphics::~DirectGraphics() {
 	SAFE_RELEASE(m_pDirect3D);
 
 	delete pInstance;
+}
+
+HWND DirectGraphics::GethWnd() {
+	return m_HWnd;
 }
 
 void DirectGraphics::SetRenderState3D(){

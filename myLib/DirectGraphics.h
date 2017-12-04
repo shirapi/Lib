@@ -25,6 +25,8 @@ public:
 		return &m_pDevice;
 	}
 
+	HWND GethWnd();
+
 private:
 	static DirectGraphics* pInstance;
 	DirectGraphics(HWND hWnd);
@@ -32,6 +34,7 @@ private:
 
 	LPDIRECT3D9 m_pDirect3D = NULL;
 	LPDIRECT3DDEVICE9 m_pDevice = NULL;
+	HWND m_HWnd;
 
 	DirectGraphics(const DirectGraphics&);
 	void operator =(const DirectGraphics&);
