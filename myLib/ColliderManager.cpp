@@ -116,3 +116,21 @@ void ColliderManager::JudgeAllSquare() {
 		}
 	}
 }
+
+std::vector<CircleCollider>* ColliderManager::SearchCollider(std::vector<CircleCollider>* pColliders, std::string className){
+	for (auto itr = m_PtrCircleColliders.begin(); itr != m_PtrCircleColliders.end(); ++itr) {
+		if ((*itr)->GetAffiliatedClassName() == className) {
+			pColliders->push_back(**itr);
+		}
+	}
+	return pColliders;
+}
+
+std::vector<SquareCollider>* ColliderManager::SearchCollider(std::vector<SquareCollider>* pColliders, std::string className) {
+	for (auto itr = m_PtrSquareColliders.begin(); itr != m_PtrSquareColliders.end(); ++itr) {
+		if ((*itr)->GetAffiliatedClassName() == className) {
+			pColliders->push_back(**itr);
+		}
+	}
+	return pColliders;
+}

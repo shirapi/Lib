@@ -17,6 +17,9 @@ public:
 	void Register(CircleCollider* pCollider);
 	void Cancel(CircleCollider* pCollider);
 	
+	std::vector<SquareCollider>* SearchCollider(std::vector<SquareCollider>* pColliders, std::string className);
+	std::vector<CircleCollider>* SearchCollider(std::vector<CircleCollider>* pColliders, std::string className);
+
 private:
 	ColliderManager();
 	~ColliderManager();

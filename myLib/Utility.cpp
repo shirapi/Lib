@@ -14,7 +14,7 @@ int Utility::Random(int min, int max)
 		seedrandom = true;
 	}
 
-	return min + rand() % (max + 1);
+	return min + rand() % (max-min + 1);
 }
 
 bool Utility::JudgeCollisionCircle(const D3DXVECTOR2& pos1, float r1, const D3DXVECTOR2& pos2, float r2) {
