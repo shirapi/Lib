@@ -41,7 +41,7 @@ HRESULT TextureManager::LoadPictureFile(const char* fileName, int width, int hei
 		0,
 		0,
 		0,
-		D3DFMT_A1R5G5B5,                // 色抜きを可能に
+		D3DFMT_A8R8G8B8,                // 色抜きを可能に
 		D3DPOOL_MANAGED,
 		D3DX_FILTER_LINEAR,
 		D3DX_FILTER_LINEAR,
