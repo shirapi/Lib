@@ -18,7 +18,7 @@ public:
 	//png,jpegファイルからデータを読み込みます
 	//第一引数 ファイルへのパス
 	//第二引数 そのテキスチャのID
-	HRESULT LoadPictureFile(const char* fileName, int width, int height);
+	HRESULT LoadPictureFile(const char* fileName, int width, int height, bool canSemitransparent);
 
 private:
 	static TextureManager* pInstance;

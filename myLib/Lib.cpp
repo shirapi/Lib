@@ -141,6 +141,6 @@ void Lib::CancelTexture(const char* fileName) {
 	m_TextureManager->CancelTexture(fileName);
 }
 
-HRESULT Lib::LoadPictureFile(const char* fileName, int width, int height) {
-	return m_TextureManager->LoadPictureFile(fileName, width, height);
+HRESULT Lib::LoadPictureFile(const char* fileName, int width, int height, bool canSemitransparent) {
+	return m_TextureManager->LoadPictureFile(fileName, width, height, canSemitransparent);
 }

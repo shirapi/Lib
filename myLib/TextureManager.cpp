@@ -28,11 +28,19 @@ void TextureManager::CancelTexture(const char* fileName) {
 	m_pTextures.erase(fileName);
 }
 
-HRESULT TextureManager::LoadPictureFile(const char* fileName, int width, int height) {
+HRESULT TextureManager::LoadPictureFile(const char* fileName, int width, int height, bool canSemitransparent) {
 	LPDIRECT3DDEVICE9* pDXDevice = DirectGraphics::GetInstance().GetDevice();
 
 	m_pTextures[fileName].width = width;
 	m_pTextures[fileName].height = height;
+
+	int FormatARGB;
+	if (canSemitransparent) {
+		FormatARGB = D3DFMT_A8R8G8B8;
+	}
+	else {
+		FormatARGB = D3DFMT_A1R5G5B5;
+	}
 
 	if (FAILED(D3DXCreateTextureFromFileEx(
 		*pDXDevice,
@@ -41,7 +49,7 @@ HRESULT TextureManager::LoadPictureFile(const char* fileName, int width, int hei
 		0,
 		0,
 		0,
-		D3DFMT_A8R8G8B8,                // 色抜きを可能に
+		(_D3DFORMAT)FormatARGB,                // 色抜きを可能に
 		D3DPOOL_MANAGED,
 		D3DX_FILTER_LINEAR,
 		D3DX_FILTER_LINEAR,
