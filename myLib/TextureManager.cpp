@@ -21,10 +21,15 @@ TextureManager::TextureManager() {
 }
 
 TextureManager::~TextureManager() {
+	for (auto itr = m_pTextures.begin(); itr != m_pTextures.end(); ++itr) {
+		itr->second.texture->Release();
+	}
+
 	delete pInstance;
 }
 
 void TextureManager::CancelTexture(const char* fileName) {
+	m_pTextures[fileName].texture->Release();
 	m_pTextures.erase(fileName);
 }
 
