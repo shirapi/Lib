@@ -2,10 +2,12 @@
 #define LIB_H
 
 #include<Windows.h>
+#include<string>
 #include"Utility.h"
 
 class DirectGraphics;
 class DirectInput;
+class SoundBufferManager;
 class Renderer;
 class ModelManager;
 class TextureManager;
@@ -111,16 +113,25 @@ public:
 	//第二引数 そのテキスチャのID
 	HRESULT LoadPictureFile(const char* fileName, int width, int height, bool canSemitransparent = true);
 
+	bool LoadWaveFile(const char* fileName);
+
+	void CancelSound(std::string fileName);
+
+	void PlayBackSound(std::string fileName, bool isLoop);
+
+	void StopSound(std::string fileName);
+
 private:
 	static Lib* pInstance;
 	Lib(HWND hWnd, HINSTANCE hInstance);
 	~Lib();
 
-	DirectGraphics* m_DirectGraphics;
-	DirectInput* m_DirectInput;
-	Renderer* m_Renderer;
-	ModelManager* m_ModelManager;
-	TextureManager* m_TextureManager;
+	DirectGraphics* m_pDirectGraphics;
+	DirectInput* m_pDirectInput;
+	Renderer* m_pRenderer;
+	ModelManager* m_pModelManager;
+	TextureManager* m_pTextureManager;
+	SoundBufferManager* m_pSoundBufferManager;
 
 	Lib(const Lib&);
 	void operator =(const Lib&);
