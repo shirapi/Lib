@@ -31,15 +31,15 @@ private:
 	ModelManager();
 	~ModelManager();
 
-	std::map<string, ModelData> m_MeshdData;
+	std::map<string, ModelData> m_MeshData;
 
 	ModelManager(const ModelManager&);
 	void operator =(const ModelManager&);
 
 public:
 	const ModelData& GetModelData(const char* fileName) {
-		if (m_MeshdData.find(fileName) != m_MeshdData.end()) {
-			return m_MeshdData[fileName];
+		if (m_MeshData.find(fileName) != m_MeshData.end()) {
+			return m_MeshData[fileName];
 		}
 		exit(1);
 	}
